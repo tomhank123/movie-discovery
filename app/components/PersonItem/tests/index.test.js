@@ -1,6 +1,6 @@
 /**
  *
- * Tests for Person
+ * Tests for PersonItem
  *
  * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
  *
@@ -10,13 +10,12 @@ import React from 'react';
 import { render } from 'react-testing-library';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 
-import { Person } from '../index';
+import PersonItem from '../index';
 
-describe('<Person />', () => {
+describe('<PersonItem />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
-    const dispatch = jest.fn();
-    render(<Person dispatch={dispatch} />);
+    render(<PersonItem />);
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -32,7 +31,7 @@ describe('<Person />', () => {
   it.skip('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = render(<Person />);
+    } = render(<PersonItem />);
     expect(firstChild).toMatchSnapshot();
   });
 });
