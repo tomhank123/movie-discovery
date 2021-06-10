@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import request from 'utils/request';
 import { REQUEST } from 'utils/constants';
 import { takeLatest, all, call, put, delay } from 'redux-saga/effects';
