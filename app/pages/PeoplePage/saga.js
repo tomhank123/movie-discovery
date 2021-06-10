@@ -18,14 +18,25 @@ export function* fetchPeople() {
 }
 
 export function* fetchDetails({ request: { personId } }) {
-  const requestUrl = `/person/${personId}`;
+  const requestDetails = `/person/${personId}`;
+  const requestCredits = `/person/${personId}/combined_credits`;
 
   yield delay(2000);
 
   try {
-    const response = yield call(request, 'get', requestUrl);
+    const [details, { crew, cast }] = yield all([
+      call(request, 'get', requestDetails),
+      call(request, 'get', requestCredits),
+    ]);
 
-    yield put(getDetails.success(response));
+    yield put(
+      getDetails.success({
+        ...details,
+        known_for: [...crew, ...cast]
+          .filter(item => item.poster_path)
+          .filter((_, index) => index < 5),
+      }),
+    );
   } catch ({ message }) {
     yield put(getDetails.failure(message));
   }
