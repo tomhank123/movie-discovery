@@ -9,19 +9,17 @@ import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { compose } from 'redux';
 import { Switch, Route } from 'react-router-dom';
 
-import { Container } from 'react-bootstrap';
 import PeopleContainer from 'containers/People';
+import PersonContainer from 'containers/Person';
 import Header from 'components/Header';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectPerson from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 
 export function PeoplePage({ ...routeProps }) {
   useInjectReducer({ key: 'person', reducer });
@@ -44,12 +42,7 @@ export function PeoplePage({ ...routeProps }) {
         />
         <Route
           path={`${match.path}/:personId`}
-          render={() => (
-            <Container>
-              <FormattedMessage {...messages.header} />
-              Children
-            </Container>
-          )}
+          render={() => <PersonContainer {...routeProps} />}
         />
       </Switch>
     </div>
