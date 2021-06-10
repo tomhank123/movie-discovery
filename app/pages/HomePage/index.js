@@ -8,12 +8,10 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
-import { Container } from 'react-bootstrap';
 
-import Collections from 'components/Collections';
+import BrowseContainer from 'containers/Browse';
 import Jumbotron from 'components/Jumbotron';
 import Header from 'components/Header';
-import collections from 'fixtures/collections';
 import messages from './messages';
 
 export default function HomePage() {
@@ -28,14 +26,7 @@ export default function HomePage() {
       </Helmet>
       <Header />
       <Jumbotron />
-      <Container>
-        <Collections
-          isSwiper
-          items={collections}
-          loading={false}
-          error={false}
-        />
-      </Container>
+      <BrowseContainer />
     </React.Fragment>
   );
 }

@@ -18,11 +18,20 @@ function Titles({ item }) {
   const title = item.title || item.name;
 
   return (
-    <Card>
-      <Card.Img variant="top" src={poster} />
+    <Card className="border-0" bg="dark" text="secondary">
+      <Card.Img variant="top" src={poster} alt={title} />
       <Card.Body>
+        <Card.Text className="small m-0">Original Title</Card.Text>
+        <Card.Title>Title</Card.Title>
+        <Button variant="outline-secondary" size="sm" as={Link} to={url}>
+          Play Now
+        </Button>
+      </Card.Body>
+      <Card.Body hidden>
         <Card.Title>{title}</Card.Title>
-        <Card.Text>{item.overview}</Card.Text>
+        <Card.Text className="text-muted small">
+          {item.original_title || item.original_name}
+        </Card.Text>
         <Button variant="secondary" size="sm" as={Link} to={url}>
           Play Now
         </Button>
