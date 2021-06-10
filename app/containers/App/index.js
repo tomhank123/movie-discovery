@@ -30,7 +30,10 @@ export default function App() {
         {/* Protected Routes */}
         <Route exact path={ROUTES.HOME} component={HomePage} />
         <Route exact path={ROUTES.SEARCH} component={SearchPage} />
-        <Route exact path={ROUTES.PERSON} component={PeoplePage} />
+        <Route
+          path={ROUTES.PERSON}
+          render={routeProps => <PeoplePage {...routeProps} />}
+        />
         <Route
           exact
           path={[ROUTES.MOVIE, ROUTES.TV]}

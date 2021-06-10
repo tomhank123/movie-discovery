@@ -10,12 +10,16 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { compose } from 'redux';
+import { Switch, Route } from 'react-router-dom';
 
 import { Container } from 'react-bootstrap';
+import PeopleContainer from 'containers/People';
 import Header from 'components/Header';
 import messages from './messages';
 
-export function PeoplePage() {
+export function PeoplePage({ ...routeProps }) {
+  const { match } = routeProps;
+
   return (
     <div>
       <Helmet>
@@ -23,9 +27,22 @@ export function PeoplePage() {
         <meta name="description" content="Description of PeoplePage" />
       </Helmet>
       <Header />
-      <Container>
-        <FormattedMessage {...messages.header} />
-      </Container>
+      <Switch>
+        <Route
+          exact
+          path={match.path}
+          render={() => <PeopleContainer {...routeProps} />}
+        />
+        <Route
+          path={`${match.path}/:personId`}
+          render={() => (
+            <Container>
+              <FormattedMessage {...messages.header} />
+              Children
+            </Container>
+          )}
+        />
+      </Switch>
     </div>
   );
 }
