@@ -10,16 +10,34 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
+import LoginPage from 'pages/LoginPage/Loadable';
+import HomePage from 'pages/HomePage/Loadable';
+import SearchPage from 'pages/SearchPage/Loadable';
+import PeoplePage from 'pages/PeoplePage/Loadable';
+import DiscoveryPage from 'pages/DiscoveryPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
+import * as ROUTES from 'utils/routes';
 import GlobalStyle from '../../global-styles';
 
 export default function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        {/* Published User Routes */}
+        <Route exact path={ROUTES.LOGIN} component={LoginPage} />
+
+        {/* Protected Routes */}
+        <Route exact path={ROUTES.HOME} component={HomePage} />
+        <Route exact path={ROUTES.SEARCH} component={SearchPage} />
+        <Route exact path={ROUTES.PERSON} component={PeoplePage} />
+        <Route
+          exact
+          path={[ROUTES.MOVIE, ROUTES.TV]}
+          component={DiscoveryPage}
+        />
+
+        {/* Others */}
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

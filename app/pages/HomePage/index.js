@@ -7,12 +7,17 @@
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Container } from 'react-bootstrap';
+import Header from 'components/Header';
 import messages from './messages';
 
 export default function HomePage() {
   return (
-    <h1>
-      <FormattedMessage {...messages.header} />
-    </h1>
+    <React.Fragment>
+      <Header />
+      <Container>
+        <FormattedMessage {...messages.header} />
+      </Container>
+    </React.Fragment>
   );
 }
