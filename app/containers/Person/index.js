@@ -52,7 +52,7 @@ export function Person({ details, onLoadDetails, ...restProps }) {
           content={<FormattedMessage {...messages.header} />}
         />
       </Helmet>
-      <Container className="mt-5">
+      <Container className="py-5">
         <PersonArticle {...details} />
       </Container>
     </div>

@@ -13,13 +13,7 @@ import Logo from 'images/logo.svg';
 
 function Header() {
   return (
-    <Navbar
-      collapseOnSelect
-      expand="lg"
-      bg="dark"
-      variant="dark"
-      className="bg-gradient"
-    >
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand href={ROUTES.HOME}>
           <Image src={Logo} alt="Movie Discovery" height="20" />
