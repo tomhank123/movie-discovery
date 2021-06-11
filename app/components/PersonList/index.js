@@ -20,9 +20,9 @@ function PersonList({ loading, error, items }) {
 
   if (items) {
     return (
-      <Row sm={6} md={4} lg={6}>
+      <Row sm={2} md={3} lg={4} xl={5} className="g-3">
         {items.map(item => (
-          <Col key={item.id} className="mb-4">
+          <Col key={item.id}>
             <PersonItem item={item} />
           </Col>
         ))}

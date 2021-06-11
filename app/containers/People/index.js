@@ -41,7 +41,7 @@ export function People({ people, onLoadPeople }) {
           content={<FormattedMessage {...messages.header} />}
         />
       </Helmet>
-      <Container className="pt-5">
+      <Container className="py-5">
         <PersonList {...people} />
       </Container>
     </div>

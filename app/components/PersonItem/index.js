@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Image, Figure } from 'react-bootstrap';
 import * as ROUTES from 'utils/routes';
 
 function PersonItem({ item }) {
@@ -17,16 +17,35 @@ function PersonItem({ item }) {
   const url = `${ROUTES.PERSON}/${item.id}`;
 
   return (
-    <Card className="border-0 shadow-sm">
-      <Card.Img variant="top" src={poster} alt={item.name} />
-      <Card.Body>
-        <Card.Text className="small m-0">{item.popularity}</Card.Text>
-        <Card.Title className="text-truncate" title={item.name}>
+    <Card className="border-0 shadow">
+      <Card.Body className="text-center">
+        <Figure className="w-75">
+          <Image
+            src={poster}
+            alt={item.name}
+            thumbnail
+            roundedCircle
+            fluid
+            className="shadow-sm"
+          />
+        </Figure>
+        <Card.Title
+          className="text-truncate text-success mb-0"
+          title={item.name}
+        >
           {item.name}
         </Card.Title>
-        <Button variant="outline-secondary" size="sm" as={Link} to={url}>
-          More Info
-        </Button>
+        <Card.Text className="text-muted font-monospace">
+          {item.known_for_department}
+        </Card.Text>
+        <Card.Text className="small m-0" hidden>
+          {item.popularity}
+        </Card.Text>
+        <div className="d-grid gap-2">
+          <Button variant="outline-secondary" size="sm" as={Link} to={url}>
+            More Info
+          </Button>
+        </div>
       </Card.Body>
     </Card>
   );
