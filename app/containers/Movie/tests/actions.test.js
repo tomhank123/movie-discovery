@@ -1,3 +1,3 @@
-describe('Browse actions', () => {
+describe('Movie actions', () => {
   describe('Default Action', () => {});
 });

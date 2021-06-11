@@ -1,13 +1,15 @@
 import request from 'utils/request';
 import { REQUEST } from 'utils/constants';
 import { takeLatest, all, call, put, delay } from 'redux-saga/effects';
-import { COLLECTIONS, collections } from './actions';
+import { HOME_COLLECTIONS, homeCollections } from './actions';
 
-export function* fetchCollecttions() {
+export function* fetchHomeCollecttions() {
   const getPopularInTheaters = '/movie/popular';
   const getPopularOnTv = '/tv/popular';
   const getTrendingToday = '/trending/all/day';
   const getTrendingThisWeek = '/trending/all/week';
+
+  console.log('fetchHomeCollecttions');
 
   yield delay(2000);
 
@@ -25,7 +27,7 @@ export function* fetchCollecttions() {
     ]);
 
     yield put(
-      collections.success([
+      homeCollections.success([
         {
           id: 'Popular On TV',
           title: 'Popular On TV',
@@ -59,14 +61,14 @@ export function* fetchCollecttions() {
       ]),
     );
   } catch ({ message }) {
-    yield put(collections.failure(message));
+    yield put(homeCollections.failure(message));
   }
 }
 
-export function* watchCollections() {
-  yield takeLatest(COLLECTIONS[REQUEST], fetchCollecttions);
+export function* watchHomeCollections() {
+  yield takeLatest(HOME_COLLECTIONS[REQUEST], fetchHomeCollecttions);
 }
 
-export default function* browseSaga() {
-  yield all([watchCollections()]);
+export default function* movieSaga() {
+  yield all([watchHomeCollections()]);
 }

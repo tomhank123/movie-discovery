@@ -1,9 +1,9 @@
 // import produce from 'immer';
-import browseReducer from '../reducer';
+import movieReducer from '../reducer';
 // import { someAction } from '../actions';
 
 /* eslint-disable default-case, no-param-reassign */
-describe('browseReducer', () => {
+describe('movieReducer', () => {
   let state;
   beforeEach(() => {
     state = {
@@ -13,7 +13,7 @@ describe('browseReducer', () => {
 
   it('returns the initial state', () => {
     const expectedResult = state;
-    expect(browseReducer(undefined, {})).toEqual(expectedResult);
+    expect(movieReducer(undefined, {})).toEqual(expectedResult);
   });
 
   /**

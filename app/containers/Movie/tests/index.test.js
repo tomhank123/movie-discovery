@@ -1,6 +1,6 @@
 /**
  *
- * Tests for Browse
+ * Tests for Movie
  *
  * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
  *
@@ -10,13 +10,13 @@ import React from 'react';
 import { render } from 'react-testing-library';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 
-import { Browse } from '../index';
+import { Movie } from '../index';
 
-describe('<Browse />', () => {
+describe('<Movie />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     const dispatch = jest.fn();
-    render(<Browse dispatch={dispatch} />);
+    render(<Movie dispatch={dispatch} />);
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -32,7 +32,7 @@ describe('<Browse />', () => {
   it.skip('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = render(<Browse />);
+    } = render(<Movie />);
     expect(firstChild).toMatchSnapshot();
   });
 });

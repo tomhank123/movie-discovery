@@ -1,6 +1,6 @@
-// import { selectBrowseDomain } from '../selectors';
+// import { selectGenreDomain } from '../selectors';
 
-describe('selectBrowseDomain', () => {
+describe('selectGenreDomain', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });
