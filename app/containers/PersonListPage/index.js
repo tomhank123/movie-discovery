@@ -1,6 +1,6 @@
 /**
  *
- * PeoplePage
+ * PersonListPage
  *
  */
 
@@ -12,33 +12,25 @@ import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import { Switch, Route } from 'react-router-dom';
 
-import PeopleContainer from 'containers/People';
-import PersonContainer from 'containers/Person';
+import PersonContainer from 'containers/PersonPage';
 import Header from 'components/Header';
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectPerson from './selectors';
-import reducer from './reducer';
-import saga from './saga';
+import PageContainer from './PageContainer';
 
-export function PeoplePage({ ...routeProps }) {
-  useInjectReducer({ key: 'person', reducer });
-  useInjectSaga({ key: 'person', saga });
-
+export function PersonListPage({ ...routeProps }) {
   const { match } = routeProps;
 
   return (
     <div>
       <Helmet>
-        <title>PeoplePage</title>
-        <meta name="description" content="Description of PeoplePage" />
+        <title>PersonListPage</title>
+        <meta name="description" content="Description of PersonListPage" />
       </Helmet>
       <Header />
       <Switch>
         <Route
           exact
           path={match.path}
-          render={() => <PeopleContainer {...routeProps} />}
+          render={() => <PageContainer {...routeProps} />}
         />
         <Route
           path={`${match.path}/:personId`}
@@ -49,13 +41,11 @@ export function PeoplePage({ ...routeProps }) {
   );
 }
 
-PeoplePage.propTypes = {
+PersonListPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  person: makeSelectPerson(),
-});
+const mapStateToProps = createStructuredSelector({});
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -68,4 +58,4 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-export default compose(withConnect)(PeoplePage);
+export default compose(withConnect)(PersonListPage);

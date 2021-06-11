@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for PeoplePage
+ * Asynchronously loads the component for PersonListPage
  *
  */
 

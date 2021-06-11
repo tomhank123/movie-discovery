@@ -15,10 +15,10 @@ import { compose, bindActionCreators } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 
-import { makeSelectPeople } from 'pages/PeoplePage/selectors';
-import * as actions from 'pages/PeoplePage/actions';
-import reducer from 'pages/PeoplePage/reducer';
-import saga from 'pages/PeoplePage/saga';
+import { makeSelectPeople } from 'containers/Person/selectors';
+import * as actions from 'containers/Person/actions';
+import reducer from 'containers/Person/reducer';
+import saga from 'containers/Person/saga';
 
 import { Container } from 'react-bootstrap';
 import PersonList from 'components/PersonList';
