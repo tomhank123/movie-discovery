@@ -13,7 +13,7 @@ import { Switch, Route } from 'react-router-dom';
 import LoginPage from 'pages/LoginPage/Loadable';
 import HomePage from 'pages/HomePage/Loadable';
 import SearchPage from 'pages/SearchPage/Loadable';
-import PersonListPage from 'containers/PersonListPage/Loadable';
+import PersonListPage from 'pages/PersonListPage/Loadable';
 import DiscoveryPage from 'pages/DiscoveryPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 

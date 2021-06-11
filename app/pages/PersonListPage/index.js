@@ -12,7 +12,7 @@ import { Helmet } from 'react-helmet';
 import { compose } from 'redux';
 import { Switch, Route } from 'react-router-dom';
 
-import PersonContainer from 'containers/PersonPage';
+import PersonContainer from 'pages/PersonPage';
 import Header from 'components/Header';
 import PageContainer from './PageContainer';
 
