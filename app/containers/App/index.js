@@ -15,7 +15,7 @@ import HomePage from 'pages/HomePage/Loadable';
 import SearchPage from 'pages/SearchPage/Loadable';
 import PersonListPage from 'pages/PersonListPage/Loadable';
 import DiscoveryPage from 'pages/DiscoveryPage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import NotFoundPage from 'pages/NotFoundPage/Loadable';
 
 import * as ROUTES from 'utils/routes';
 import GlobalStyle from '../../global-styles';
