@@ -29,7 +29,7 @@ export function People({ people, onLoadPeople }) {
   useInjectSaga({ key: 'person', saga });
 
   useEffect(() => {
-    onLoadPeople();
+    onLoadPeople({});
   }, []);
 
   return (
