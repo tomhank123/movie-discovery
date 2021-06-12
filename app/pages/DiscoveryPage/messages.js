@@ -11,6 +11,6 @@ export const scope = 'app.containers.DiscoveryPage';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'This is the DiscoveryPage container!',
+    defaultMessage: 'Discovery Page container!',
   },
 });
