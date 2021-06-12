@@ -13,7 +13,7 @@ import { Switch, Route } from 'react-router-dom';
 import LoginPage from 'pages/LoginPage/Loadable';
 import HomePage from 'pages/HomePage/Loadable';
 import SearchPage from 'pages/SearchPage/Loadable';
-import PersonListPage from 'pages/PersonListPage/Loadable';
+import PeopleModules from 'modules/People/Loadable';
 import DiscoveryPage from 'pages/DiscoveryPage/Loadable';
 import NotFoundPage from 'pages/NotFoundPage/Loadable';
 
@@ -32,7 +32,7 @@ export default function App() {
         <Route exact path={ROUTES.SEARCH} component={SearchPage} />
         <Route
           path={ROUTES.PERSON}
-          render={routeProps => <PersonListPage {...routeProps} />}
+          render={routeProps => <PeopleModules {...routeProps} />}
         />
         <Route
           exact
