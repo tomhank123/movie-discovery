@@ -1,6 +1,6 @@
 /**
  *
- * Person
+ * People
  *
  */
 
@@ -12,23 +12,23 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectPerson from './selectors';
+import makeSelectPeople from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-export function Person() {
-  useInjectReducer({ key: 'person', reducer });
-  useInjectSaga({ key: 'person', saga });
+export function People() {
+  useInjectReducer({ key: 'people', reducer });
+  useInjectSaga({ key: 'people', saga });
 
   return <div />;
 }
 
-Person.propTypes = {
+People.propTypes = {
   // dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  person: makeSelectPerson(),
+  people: makeSelectPeople(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -42,4 +42,4 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-export default compose(withConnect)(Person);
+export default compose(withConnect)(People);

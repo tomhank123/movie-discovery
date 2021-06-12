@@ -19,15 +19,15 @@ import { useInjectReducer } from 'utils/injectReducer';
 import { Container } from 'react-bootstrap';
 import PersonArticle from 'components/PersonArticle';
 
-import { makeSelectDetails } from 'containers/Person/selectors';
-import * as actions from 'containers/Person/actions';
-import reducer from 'containers/Person/reducer';
-import saga from 'containers/Person/saga';
+import { makeSelectDetails } from 'containers/People/selectors';
+import * as actions from 'containers/People/actions';
+import reducer from 'containers/People/reducer';
+import saga from 'containers/People/saga';
 import messages from './messages';
 
 export function Person({ details, onLoadDetails, ...restProps }) {
-  useInjectReducer({ key: 'person', reducer });
-  useInjectSaga({ key: 'person', saga });
+  useInjectReducer({ key: 'people', reducer });
+  useInjectSaga({ key: 'people', saga });
 
   const { location } = restProps;
   const match = matchPath(location.pathname, {

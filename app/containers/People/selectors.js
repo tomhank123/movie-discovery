@@ -2,36 +2,36 @@ import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
 /**
- * Direct selector to the person state domain
+ * Direct selector to the people state domain
  */
 
-const selectPersonDomain = state => state.person || initialState;
+const selectPeopleDomain = state => state.people || initialState;
 
 /**
  * Other specific selectors
  */
 
 /**
- * Default selector used by Person
+ * Default selector used by People
  */
 
-const makeSelectPerson = () =>
+const makeSelectPeopleState = () =>
   createSelector(
-    selectPersonDomain,
+    selectPeopleDomain,
     substate => substate,
   );
 
 const makeSelectPeople = () =>
   createSelector(
-    selectPersonDomain,
+    selectPeopleDomain,
     substate => substate.people,
   );
 
 const makeSelectDetails = () =>
   createSelector(
-    selectPersonDomain,
+    selectPeopleDomain,
     substate => substate.details,
   );
 
-export default makeSelectPerson;
+export default makeSelectPeopleState;
 export { makeSelectPeople, makeSelectDetails };

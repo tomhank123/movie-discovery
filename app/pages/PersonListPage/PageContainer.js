@@ -15,18 +15,18 @@ import { compose, bindActionCreators } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 
-import { makeSelectPeople } from 'containers/Person/selectors';
-import * as actions from 'containers/Person/actions';
-import reducer from 'containers/Person/reducer';
-import saga from 'containers/Person/saga';
+import { makeSelectPeople } from 'containers/People/selectors';
+import * as actions from 'containers/People/actions';
+import reducer from 'containers/People/reducer';
+import saga from 'containers/People/saga';
 
 import { Container } from 'react-bootstrap';
 import PersonList from 'components/PersonList';
 import messages from './messages';
 
 export function People({ people, onLoadPeople }) {
-  useInjectReducer({ key: 'person', reducer });
-  useInjectSaga({ key: 'person', saga });
+  useInjectReducer({ key: 'people', reducer });
+  useInjectSaga({ key: 'people', saga });
 
   useEffect(() => {
     onLoadPeople({});
@@ -58,7 +58,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 function mapDispatchToProps(dispatch) {
-  const onLoadPeople = actions.getPeople.request;
+  const onLoadPeople = actions.getPopular.request;
 
   return {
     ...bindActionCreators({ onLoadPeople }, dispatch),

@@ -1,9 +1,9 @@
 // import produce from 'immer';
-import personReducer from '../reducer';
+import peopleReducer from '../reducer';
 // import { someAction } from '../actions';
 
 /* eslint-disable default-case, no-param-reassign */
-describe('personReducer', () => {
+describe('peopleReducer', () => {
   let state;
   beforeEach(() => {
     state = {
@@ -13,7 +13,7 @@ describe('personReducer', () => {
 
   it('returns the initial state', () => {
     const expectedResult = state;
-    expect(personReducer(undefined, {})).toEqual(expectedResult);
+    expect(peopleReducer(undefined, {})).toEqual(expectedResult);
   });
 
   /**
