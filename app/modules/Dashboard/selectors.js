@@ -21,5 +21,11 @@ const makeSelectDashboard = () =>
     substate => substate,
   );
 
+const makeSelectCollections = () =>
+  createSelector(
+    selectDashboardDomain,
+    substate => substate.collections,
+  );
+
 export default makeSelectDashboard;
-export { selectDashboardDomain };
+export { makeSelectCollections };

@@ -10,12 +10,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import LoginPage from 'pages/LoginPage/Loadable';
-import HomePage from 'pages/HomePage/Loadable';
-import SearchPage from 'pages/SearchPage/Loadable';
-import PeopleModules from 'modules/People/Loadable';
-import DiscoveryPage from 'pages/DiscoveryPage/Loadable';
-import NotFoundPage from 'pages/NotFoundPage/Loadable';
+import DashboardModule from 'modules/Dashboard/Loadable';
+import PeopleModule from 'modules/People/Loadable';
+import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import * as ROUTES from 'utils/routes';
 import GlobalStyle from '../../global-styles';
@@ -25,20 +22,16 @@ export default function App() {
     <div>
       <Switch>
         {/* Published User Routes */}
-        <Route exact path={ROUTES.LOGIN} component={LoginPage} />
+        <Route exact path={ROUTES.LOGIN} component={null} />
 
         {/* Protected Routes */}
-        <Route exact path={ROUTES.HOME} component={HomePage} />
-        <Route exact path={ROUTES.SEARCH} component={SearchPage} />
+        <Route exact path={ROUTES.HOME} component={DashboardModule} />
+        <Route exact path={ROUTES.SEARCH} component={null} />
         <Route
           path={ROUTES.PERSON}
-          render={routeProps => <PeopleModules {...routeProps} />}
+          render={routeProps => <PeopleModule {...routeProps} />}
         />
-        <Route
-          exact
-          path={[ROUTES.MOVIE, ROUTES.TV]}
-          component={DiscoveryPage}
-        />
+        <Route exact path={[ROUTES.MOVIE, ROUTES.TV]} component={null} />
 
         {/* Others */}
         <Route component={NotFoundPage} />
