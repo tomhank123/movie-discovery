@@ -14,7 +14,7 @@ function Titles({ item }) {
   const poster = item.poster_path
     ? `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${item.poster_path}`
     : item.poster_path;
-  const url = `${ROUTES.MOVIE}?id=${item.id}`;
+  const url = `${ROUTES.MOVIE}/${item.id}`;
   const title = item.title || item.name;
 
   return (

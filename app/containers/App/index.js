@@ -12,6 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import DashboardModule from 'modules/Dashboard/Loadable';
 import PeopleModule from 'modules/People/Loadable';
+import MovieModule from 'modules/Movies/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import * as ROUTES from 'utils/routes';
@@ -31,7 +32,10 @@ export default function App() {
           path={ROUTES.PERSON}
           render={routeProps => <PeopleModule {...routeProps} />}
         />
-        <Route exact path={[ROUTES.MOVIE, ROUTES.TV]} component={null} />
+        <Route
+          path={[ROUTES.MOVIE, ROUTES.TV]}
+          render={routeProps => <MovieModule {...routeProps} />}
+        />
 
         {/* Others */}
         <Route component={NotFoundPage} />

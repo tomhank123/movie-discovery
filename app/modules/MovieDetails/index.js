@@ -14,22 +14,35 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
+import { Container } from 'react-bootstrap';
+import Header from 'components/Header';
+
 import makeSelectMovieDetails from './selectors';
+import * as helpers from './helpers';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
-export function MovieDetails() {
+export function MovieDetails({ ...restProps }) {
   useInjectReducer({ key: 'movieDetails', reducer });
   useInjectSaga({ key: 'movieDetails', saga });
+
+  const { location } = restProps;
+  const movieId = helpers.getMovieId(location);
 
   return (
     <div>
       <Helmet>
         <title>MovieDetails</title>
-        <meta name="description" content="Description of MovieDetails" />
+        <meta
+          name="description"
+          content={<FormattedMessage {...messages.header} />}
+        />
       </Helmet>
-      <FormattedMessage {...messages.header} />
+      <Header />
+      <Container>
+        <h1>Movie {movieId}</h1>
+      </Container>
     </div>
   );
 }
