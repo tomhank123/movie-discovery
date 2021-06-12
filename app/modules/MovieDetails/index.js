@@ -16,6 +16,7 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import { Container } from 'react-bootstrap';
 import Header from 'components/Header';
+import MovieArticle from './MovieArticle';
 
 import { makeSelectDetails } from './selectors';
 import * as actions from './actions';
@@ -48,7 +49,7 @@ export function MovieDetails({ details, onLoadDetails, ...restProps }) {
       </Helmet>
       <Header />
       <Container>
-        <h1>Movie {movieId}</h1>
+        <MovieArticle {...details} />
       </Container>
     </div>
   );

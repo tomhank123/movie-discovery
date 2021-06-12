@@ -8,13 +8,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
-import * as ROUTES from 'utils/routes';
+import { getPoster, getUrl } from 'utils/movieUtils';
 
 function Titles({ item }) {
-  const poster = item.poster_path
-    ? `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${item.poster_path}`
-    : item.poster_path;
-  const url = `${ROUTES.MOVIE}/${item.id}`;
+  const poster = getPoster(item.poster_path);
+  const url = getUrl(item.id);
   const title = item.title || item.name;
 
   return (
