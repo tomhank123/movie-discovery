@@ -18,21 +18,17 @@ function Titles({ item }) {
   const title = item.title || item.name;
 
   return (
-    <Card className="border-0 shadow">
+    <Card className="border-0 shadow-sm">
       <Card.Img variant="top" src={poster} alt={title} />
       <Card.Body>
-        <Button variant="secondary" size="sm" as={Link} to={url}>
-          Play
-        </Button>
-        <Button
-          variant="outline-secondary"
-          size="sm"
-          as={Link}
-          to={url}
-          className="ms-1"
-        >
-          + My List
-        </Button>
+        <div className="d-grid gap-2">
+          <Button variant="secondary" size="sm" as={Link} to={url}>
+            Watch Now
+          </Button>
+          <Button variant="outline-secondary" size="sm" as={Link} to={url}>
+            Watch List
+          </Button>
+        </div>
       </Card.Body>
     </Card>
   );

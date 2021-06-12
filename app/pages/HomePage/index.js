@@ -45,7 +45,7 @@ export function HomePage({ collections, onLoadCollections }) {
       </Helmet>
       <Header />
       <Jumbotron />
-      <Container>
+      <Container className="py-5">
         <Collections isSwiper {...collections} />
       </Container>
     </React.Fragment>

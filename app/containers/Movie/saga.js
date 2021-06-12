@@ -9,8 +9,6 @@ export function* fetchHomeCollecttions() {
   const getTrendingToday = '/trending/all/day';
   const getTrendingThisWeek = '/trending/all/week';
 
-  console.log('fetchHomeCollecttions');
-
   yield delay(2000);
 
   try {

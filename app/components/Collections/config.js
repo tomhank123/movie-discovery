@@ -3,22 +3,23 @@ export default {
   slidesPerView: 3,
   loop: false,
   freeMode: true,
+  preloadImages: false,
+  lazy: true,
   breakpoints: {
-    '@0.00': {
+    576: {
       slidesPerView: 3,
-      spaceBetween: 8,
     },
-    '@0.75': {
+    768: {
+      slidesPerView: 4,
+    },
+    992: {
       slidesPerView: 5,
-      spaceBetween: 10,
     },
-    '@1.00': {
-      slidesPerView: 5,
-      spaceBetween: 12,
-    },
-    '@1.50': {
+    1200: {
       slidesPerView: 6,
-      spaceBetween: 16,
+    },
+    1400: {
+      slidesPerView: 7,
     },
   },
 };

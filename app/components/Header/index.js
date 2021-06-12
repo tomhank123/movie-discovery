@@ -15,15 +15,12 @@ function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href={ROUTES.HOME}>
+        <Navbar.Brand as={RouteLink} to={ROUTES.HOME}>
           <Image src={Logo} alt="Movie Discovery" height="20" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={RouteLink} to={ROUTES.HOME}>
-              Home
-            </Nav.Link>
             <Nav.Link as={RouteLink} to={ROUTES.TV}>
               TV Shows
             </Nav.Link>
