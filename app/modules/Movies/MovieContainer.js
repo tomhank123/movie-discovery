@@ -4,27 +4,36 @@
  *
  */
 
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
+import { bindActionCreators, compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 
-import reducer from 'modules/People/reducer';
-import saga from 'modules/People/saga';
-
 import { Container } from 'react-bootstrap';
 import Header from 'components/Header';
+
+import * as actions from './actions';
+import { makeSelectPopularMovies } from './selectors';
+import reducer from './reducer';
+import saga from './saga';
 import messages from './messages';
 
-export function People() {
+export function People({ popularMovies, onLoadPopularMovies }) {
   useInjectReducer({ key: 'movies', reducer });
   useInjectSaga({ key: 'movies', saga });
+
+  useEffect(() => {
+    onLoadPopularMovies();
+  }, []);
+
+  // eslint-disable-next-line no-console
+  console.log('popularMovies', popularMovies);
 
   return (
     <div>
@@ -43,12 +52,21 @@ export function People() {
   );
 }
 
-People.propTypes = {};
+People.propTypes = {
+  popularMovies: PropTypes.object,
+  onLoadPopularMovies: PropTypes.func,
+};
 
-const mapStateToProps = createStructuredSelector({});
+const mapStateToProps = createStructuredSelector({
+  popularMovies: makeSelectPopularMovies(),
+});
 
-function mapDispatchToProps(/* dispatch */) {
-  return {};
+function mapDispatchToProps(dispatch) {
+  const onLoadPopularMovies = actions.getPopular.request;
+
+  return {
+    ...bindActionCreators({ onLoadPopularMovies }, dispatch),
+  };
 }
 
 const withConnect = connect(
