@@ -8,6 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
+import ReactPlayer from 'react-player';
 import { Button, Col, Card, Row } from 'react-bootstrap';
 import Titles from 'components/Titles';
 import {
@@ -16,6 +17,7 @@ import {
   getOverview,
   getReleasedYear,
   convertRuntime,
+  getVideoUrls,
 } from 'utils/movieUtils';
 import PersonItem from '../PersonItem';
 
@@ -38,24 +40,30 @@ function MovieArticle({ loading, error, item }) {
   if (item) {
     const backdrop = getBackdrop(item.backdrop_path);
     const overview = getOverview(item.overview);
+    const videoUrls = getVideoUrls(item.videos.results);
 
     return (
       <article className="d-grid gap-4">
         <Row>
-          <Col md={12} lg={8} className="order-1 order-lg-0">
-            <Card
-              body
-              className="border-0 shadow-sm"
-              bg="secondary"
-              text="light"
-            >
-              Player
-            </Card>
+          <Col md={12} lg={8}>
+            <div className="ratio ratio-16x9">
+              <ReactPlayer
+                width="100%"
+                height="100%"
+                url={[
+                  ...videoUrls,
+                  'https://www.youtube.com/watch?v=ysz5S6PUM-U',
+                  'https://www.youtube.com/watch?v=oUFJJNQGwhk',
+                  'https://www.youtube.com/watch?v=jNgP6d9HraI',
+                ]}
+              />
+            </div>
             <Card
               body
               className="border-0 shadow-sm mt-4"
               bg="secondary"
               text="light"
+              hidden
             >
               Comments
             </Card>

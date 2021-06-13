@@ -23,3 +23,11 @@ export const convertRuntime = runtime => {
 
   return `${hours}h ${minutes}m`;
 };
+
+export const getVideoUrls = videos => {
+  const baseUrl = 'https://www.youtube.com/watch?v=';
+  const youtubeUrls = videos
+    .filter(({ site }) => site === 'YouTube')
+    .map(({ key }) => `${baseUrl}${key}`);
+  return [...youtubeUrls];
+};
