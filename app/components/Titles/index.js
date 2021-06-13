@@ -16,7 +16,7 @@ function Titles({ item }) {
   const title = item.title || item.name;
 
   return (
-    <Card className="border-0 shadow-sm">
+    <Card className="border-0 shadow-sm h-100">
       <Card.Img variant="top" src={poster} alt={title} />
       <Card.Body>
         <div className="d-grid gap-2">
