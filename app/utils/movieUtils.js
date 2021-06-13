@@ -12,7 +12,7 @@ export const getUrl = id => `${ROUTES.MOVIE}/${id}`;
 export const getOverview = overview =>
   truncate(overview, {
     length: 180,
-    omission: ' ...<a href="/">Wikipedia</a>',
+    omission: ' ...<a href="/" class="text-success">Wikipedia</a>',
   }).replace(/\n/g, '<br />');
 
 export const getReleasedYear = releaseDate => releaseDate.slice(0, 4);

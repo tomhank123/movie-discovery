@@ -4,7 +4,7 @@ import { takeLatest, all, call, put, delay } from 'redux-saga/effects';
 import { GET_DETAILS, getDetails } from './actions';
 
 export function* fetchDetails({ request: { movieId } }) {
-  const requestDetails = `/movie/${movieId}?append_to_response=similar,videos,images,credits`;
+  const requestDetails = `/movie/${movieId}?append_to_response=similar,videos,images,credits,reviews`;
 
   yield delay(2000);
 

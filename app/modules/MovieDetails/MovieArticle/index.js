@@ -9,7 +9,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import { Button, Col, Card, Row } from 'react-bootstrap';
-import PersonItem from 'components/PersonItem';
 import Titles from 'components/Titles';
 import {
   getBackdrop,
@@ -18,6 +17,7 @@ import {
   getReleasedYear,
   convertRuntime,
 } from 'utils/movieUtils';
+import PersonItem from '../PersonItem';
 
 function MovieArticle({ loading, error, item }) {
   if (loading) {
@@ -59,19 +59,9 @@ function MovieArticle({ loading, error, item }) {
             >
               Comments
             </Card>
-            <Row xs={3} md={4} className="g-3 mt-4">
-              {item.credits.cast
-                .filter((_, index) => index < 4)
-                .map((cast, index) => (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <Col key={`${cast.id}-${index}`}>
-                    <PersonItem item={cast} />
-                  </Col>
-                ))}
-            </Row>
-            <Row xs={3} md={4} lg={4} xl={5} className="g-3 mt-4">
+            <Row xs={3} md={4} xl={5} className="g-3 mt-4">
               {item.similar.results
-                .filter((_, index) => index < 5)
+                .filter((_, index) => index < 10)
                 .map((titles, index) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <Col key={`${titles.id}-${index}`}>
@@ -119,7 +109,7 @@ function MovieArticle({ loading, error, item }) {
                 </Card.Text>
               </Card.Body>
               <Card.Body className="border-top">
-                <a href={item.homepage} target="_blank">
+                <a href={item.homepage} target="_blank" className="text-muted">
                   Go to homepage
                 </a>
               </Card.Body>
@@ -165,6 +155,19 @@ function MovieArticle({ loading, error, item }) {
                     {item.revenue}
                   </li>
                 </ul>
+                <Card.Title className="fs-6 fw-bold">
+                  Top Billed Cast
+                </Card.Title>
+                <Row xs={3} className="gx-2 gy-3">
+                  {item.credits.cast
+                    .filter((_, index) => index < 6)
+                    .map((cast, index) => (
+                      // eslint-disable-next-line react/no-array-index-key
+                      <Col key={`${cast.id}-${index}`}>
+                        <PersonItem item={cast} />
+                      </Col>
+                    ))}
+                </Row>
               </Card.Body>
             </Card>
           </Col>
