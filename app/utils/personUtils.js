@@ -7,4 +7,5 @@ export const getPoster = posterPath =>
 export const getBio = bio =>
   truncate(bio, {
     length: 180,
+    omission: ' ...<a href="/">Wikipedia</a>',
   }).replace(/\n/g, '<br />');
