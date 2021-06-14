@@ -21,11 +21,11 @@ const makeSelectMovies = () =>
     substate => substate,
   );
 
-const makeSelectPopularMovies = () =>
+const makeSelectCollections = () =>
   createSelector(
     selectMoviesDomain,
-    substate => substate.popularMovies,
+    substate => substate.collections,
   );
 
 export default makeSelectMovies;
-export { makeSelectPopularMovies };
+export { makeSelectCollections };

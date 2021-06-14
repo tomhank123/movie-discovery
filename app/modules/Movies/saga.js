@@ -1,26 +1,52 @@
-import request from 'utils/request';
+import { all, call, delay, put, takeLatest } from 'redux-saga/effects';
 import { REQUEST } from 'utils/constants';
-import { takeLatest, all, call, put, delay } from 'redux-saga/effects';
-import { GET_POPULAR, getPopular } from './actions';
+import request from 'utils/request';
+import { getCollections, GET_COLLECTIONS } from './actions';
 
-export function* fetchPopular() {
-  const requestUrl = '/movie/popular';
-
+export function* fetchCollecttions() {
   yield delay(2000);
 
   try {
-    const response = yield call(request, 'get', requestUrl);
+    const [popular, nowPlaying, upcoming, topRated] = yield all([
+      call(request, 'get', '/movie/popular'),
+      call(request, 'get', '/movie/now_playing'),
+      call(request, 'get', '/movie/upcoming'),
+      call(request, 'get', 'movie/top_rated'),
+    ]);
 
-    yield put(getPopular.success(response));
+    yield put(
+      getCollections.success([
+        {
+          id: 'Popular In Theaters',
+          title: 'Popular In Theaters',
+          data: popular,
+        },
+        {
+          id: 'What are people watching?',
+          title: 'What are people watching?',
+          data: nowPlaying,
+        },
+        {
+          id: 'Worth the wait',
+          title: 'Worth the wait',
+          data: upcoming,
+        },
+        {
+          id: 'Top Rated',
+          title: 'Top Rated',
+          data: topRated,
+        },
+      ]),
+    );
   } catch ({ message }) {
-    yield put(getPopular.failure(message));
+    yield put(getCollections.failure(message));
   }
 }
 
-export function* watchPopular() {
-  yield takeLatest(GET_POPULAR[REQUEST], fetchPopular);
+export function* watchCollections() {
+  yield takeLatest(GET_COLLECTIONS[REQUEST], fetchCollecttions);
 }
 
 export default function* moviesSaga() {
-  yield all([watchPopular()]);
+  yield all([watchCollections()]);
 }

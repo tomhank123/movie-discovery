@@ -17,23 +17,21 @@ import { useInjectReducer } from 'utils/injectReducer';
 
 import { Container } from 'react-bootstrap';
 import Header from 'components/Header';
+import Collections from 'components/Collections';
 
 import * as actions from './actions';
-import { makeSelectPopularMovies } from './selectors';
+import { makeSelectCollections } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
-export function People({ popularMovies, onLoadPopularMovies }) {
+export function People({ collections, onLoadCollections }) {
   useInjectReducer({ key: 'movies', reducer });
   useInjectSaga({ key: 'movies', saga });
 
   useEffect(() => {
-    onLoadPopularMovies();
+    onLoadCollections();
   }, []);
-
-  // eslint-disable-next-line no-console
-  console.log('popularMovies', popularMovies);
 
   return (
     <div>
@@ -46,26 +44,26 @@ export function People({ popularMovies, onLoadPopularMovies }) {
       </Helmet>
       <Header />
       <Container className="py-5">
-        <FormattedMessage {...messages.header} />
+        <Collections isSwiper {...collections} />
       </Container>
     </div>
   );
 }
 
 People.propTypes = {
-  popularMovies: PropTypes.object,
-  onLoadPopularMovies: PropTypes.func,
+  collections: PropTypes.object,
+  onLoadCollections: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
-  popularMovies: makeSelectPopularMovies(),
+  collections: makeSelectCollections(),
 });
 
 function mapDispatchToProps(dispatch) {
-  const onLoadPopularMovies = actions.getPopular.request;
+  const onLoadCollections = actions.getCollections.request;
 
   return {
-    ...bindActionCreators({ onLoadPopularMovies }, dispatch),
+    ...bindActionCreators({ onLoadCollections }, dispatch),
   };
 }
 

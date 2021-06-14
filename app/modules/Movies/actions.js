@@ -5,5 +5,5 @@
  */
 import { createAsyncAction, createRequestTypes } from 'utils/reduxHelpers';
 
-export const GET_POPULAR = createRequestTypes('app/Movies/GET_POPULAR');
-export const getPopular = createAsyncAction(GET_POPULAR);
+export const GET_COLLECTIONS = createRequestTypes('app/Movies/GET_COLLECTIONS');
+export const getCollections = createAsyncAction(GET_COLLECTIONS);

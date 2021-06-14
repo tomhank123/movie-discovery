@@ -3,7 +3,7 @@ import { REQUEST } from 'utils/constants';
 import { takeLatest, all, call, put, delay } from 'redux-saga/effects';
 import { GET_COLLECTIONS, getCollections } from './actions';
 
-export function* fetchHomeCollecttions() {
+export function* fetchCollecttions() {
   const getPopularInTheaters = '/movie/popular';
   const getPopularOnTv = '/tv/popular';
   const getTrendingToday = '/trending/all/day';
@@ -63,10 +63,10 @@ export function* fetchHomeCollecttions() {
   }
 }
 
-export function* watchHomeCollections() {
-  yield takeLatest(GET_COLLECTIONS[REQUEST], fetchHomeCollecttions);
+export function* watchCollections() {
+  yield takeLatest(GET_COLLECTIONS[REQUEST], fetchCollecttions);
 }
 
 export default function* dashboardSaga() {
-  yield all([watchHomeCollections()]);
+  yield all([watchCollections()]);
 }
