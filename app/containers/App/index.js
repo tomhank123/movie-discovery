@@ -13,6 +13,7 @@ import { Switch, Route } from 'react-router-dom';
 import DashboardModule from 'modules/Dashboard/Loadable';
 import PeopleModule from 'modules/People/Loadable';
 import MovieModule from 'modules/Movies/Loadable';
+import TvModule from 'modules/Tv/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import * as ROUTES from 'utils/routes';
@@ -33,8 +34,12 @@ export default function App() {
           render={routeProps => <PeopleModule {...routeProps} />}
         />
         <Route
-          path={[ROUTES.MOVIE, ROUTES.TV]}
+          path={[ROUTES.MOVIE]}
           render={routeProps => <MovieModule {...routeProps} />}
+        />
+        <Route
+          path={[ROUTES.TV]}
+          render={routeProps => <TvModule {...routeProps} />}
         />
 
         {/* Others */}

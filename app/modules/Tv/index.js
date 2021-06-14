@@ -7,30 +7,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { Switch, Route } from 'react-router-dom';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
+import MovieDetails from 'modules/MovieDetails';
+import TvContainer from './TvContainer';
 import makeSelectTv from './selectors';
-import reducer from './reducer';
-import saga from './saga';
-import messages from './messages';
 
-export function Tv() {
-  useInjectReducer({ key: 'tv', reducer });
-  useInjectSaga({ key: 'tv', saga });
+export function Tv({ ...routeProps }) {
+  const { match } = routeProps;
 
   return (
-    <div>
-      <Helmet>
-        <title>Tv</title>
-        <meta name="description" content="Description of Tv" />
-      </Helmet>
-      <FormattedMessage {...messages.header} />
-    </div>
+    <Switch>
+      <Route
+        exact
+        path={match.path}
+        render={() => <TvContainer {...routeProps} />}
+      />
+      <Route
+        path={`${match.path}/:personId`}
+        render={() => <MovieDetails {...routeProps} />}
+      />
+    </Switch>
   );
 }
 

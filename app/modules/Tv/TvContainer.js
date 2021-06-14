@@ -1,6 +1,6 @@
 /**
  *
- * MovieContainer
+ * TvContainer
  *
  */
 
@@ -25,9 +25,9 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
-export function MovieContainer({ collections, onLoadCollections }) {
-  useInjectReducer({ key: 'movies', reducer });
-  useInjectSaga({ key: 'movies', saga });
+export function TvContainer({ collections, onLoadCollections }) {
+  useInjectReducer({ key: 'tv', reducer });
+  useInjectSaga({ key: 'tv', saga });
 
   useEffect(() => {
     onLoadCollections();
@@ -50,7 +50,7 @@ export function MovieContainer({ collections, onLoadCollections }) {
   );
 }
 
-MovieContainer.propTypes = {
+TvContainer.propTypes = {
   collections: PropTypes.object,
   onLoadCollections: PropTypes.func,
 };
@@ -72,4 +72,4 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-export default compose(withConnect)(MovieContainer);
+export default compose(withConnect)(TvContainer);

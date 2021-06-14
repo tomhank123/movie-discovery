@@ -3,11 +3,7 @@
  * Tv actions
  *
  */
+import { createAsyncAction, createRequestTypes } from 'utils/reduxHelpers';
 
-import { DEFAULT_ACTION } from './constants';
-
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
+export const GET_COLLECTIONS = createRequestTypes('app/Tv/GET_COLLECTIONS');
+export const getCollections = createAsyncAction(GET_COLLECTIONS);
