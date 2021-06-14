@@ -4,10 +4,7 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import { createAsyncAction, createRequestTypes } from 'utils/reduxHelpers';
 
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
+export const GET_DETAILS = createRequestTypes('app/TvDetails/GET_DETAILS');
+export const getDetails = createAsyncAction(GET_DETAILS);

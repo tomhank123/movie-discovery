@@ -11,7 +11,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Switch, Route } from 'react-router-dom';
 
-import MovieDetails from 'modules/MovieDetails';
+import TvDetails from 'modules/TvDetails';
 import TvContainer from './TvContainer';
 import makeSelectTv from './selectors';
 
@@ -27,7 +27,7 @@ export function Tv({ ...routeProps }) {
       />
       <Route
         path={`${match.path}/:personId`}
-        render={() => <MovieDetails {...routeProps} />}
+        render={() => <TvDetails {...routeProps} />}
       />
     </Switch>
   );

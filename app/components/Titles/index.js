@@ -8,11 +8,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
-import { getPoster, getUrl } from 'utils/movieUtils';
+import * as movieUtils from 'utils/movieUtils';
+import * as tvUtils from 'utils/tvUtils';
 
 function Titles({ item }) {
-  const poster = getPoster(item.poster_path);
-  const url = getUrl(item.id);
+  const isMovie = item.title;
+  const poster = movieUtils.getPoster(item.poster_path);
+  const url = isMovie ? movieUtils.getUrl(item.id) : tvUtils.getUrl(item.id);
   const title = item.title || item.name;
 
   return (
